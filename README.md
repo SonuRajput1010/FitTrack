@@ -4,63 +4,86 @@
 
 FitTrack is a production-style **Full Stack Fitness Tracking Platform** built using **Spring Boot Microservices**, **React**, **Keycloak**, **RabbitMQ**, **MongoDB**, **PostgreSQL**, and **Google Gemini AI**.
 
-The application enables users to securely track fitness activities, manage personal profiles, and receive AI-powered workout recommendations through an event-driven microservices architecture.
+The platform enables users to securely manage their fitness journey by tracking workouts, maintaining personal profiles, and receiving AI-powered workout recommendations through an event-driven microservices architecture.
+
+> 🚧 **Live Demo:** Coming Soon (Railway Deployment)
+
+---
+
+# 🚀 Project Highlights
+
+- 🏗 Spring Boot Microservices Architecture
+- 🔐 OAuth2 Authentication with Keycloak
+- 🌐 Spring Cloud Gateway
+- 🔍 Eureka Service Discovery
+- ⚙ Centralized Configuration Server
+- 📨 RabbitMQ Event-Driven Communication
+- 🤖 Google Gemini AI Integration
+- 🗄 PostgreSQL & MongoDB
+- 📊 Interactive Dashboard
+- 🌙 Responsive Dark Theme UI
 
 ---
 
 # 📸 Application Preview
-
-> Screenshots will be added after deployment.
 
 | Login | Dashboard |
 |-------|-----------|
 | ![](docs/login.png) | ![](docs/dashboard.png) |
 
 | Profile |
-|-------|
+|---------|
 | ![](docs/profile.png) |
 
-| Activities | AI Recommendation |
+| Activities | AI Recommendations |
 |------------|-------------------|
 | ![](docs/activities.png) | ![](docs/recommendation.png) |
 
 ---
 
+# 🏗 System Architecture
+
+![](docs/architecture.png)
+
+For a detailed explanation of the architecture:
+
+📄 **[Architecture Documentation](docs/ARCHITECTURE.md)**
+
+---
+
 # ✨ Features
 
-### 🔐 Authentication
+## 🔐 Authentication
 
-- OAuth2 Authentication using Keycloak
+- OAuth2 Authentication
+- Keycloak Integration
 - JWT Token Validation
-- Secure API Gateway
-- Automatic User Registration
 - Protected REST APIs
+- Automatic User Registration
 
 ---
 
-### 👤 User Management
+## 👤 User Management
 
 - Register User
-- View User Profile
+- View Profile
 - Update Profile
 - Delete Profile
-- Profile Goal Management
+- Fitness Goal Management
 
 ---
 
-### 🏃 Activity Tracking
+## 🏃 Activity Tracking
 
-Users can
-
-- Add Activities
-- Update Activities
-- Delete Activities
+- Add Activity
+- Update Activity
+- Delete Activity
 - View Activity History
 - Track Workout Duration
 - Track Calories Burned
-- Store Additional Metrics
+- Store Workout Metrics
 
-Supported Activities
+Supported activities include:
 
 - Running
 - Walking
@@ -72,24 +95,23 @@ Supported Activities
 
 ---
 
-### 🤖 AI Recommendation Engine
+## 🤖 AI Recommendation Engine
 
-Whenever an activity is recorded
+Whenever an activity is created:
 
-- Activity is stored in MongoDB
-- Activity event is published to RabbitMQ
-- AI Service consumes the message
-- Gemini AI analyzes the workout
-- Personalized recommendations are generated
-- Recommendations are stored in MongoDB
+1. Activity is stored in MongoDB.
+2. Event is published to RabbitMQ.
+3. AI Service consumes the event.
+4. Google Gemini generates recommendations.
+5. Recommendations are stored and displayed to the user.
 
 ---
 
-### 📊 Dashboard
+## 📊 Dashboard
 
-Interactive Dashboard including
+The dashboard provides:
 
-- Weekly Activity
+- Weekly Activity Summary
 - Calories Burned
 - Activity Distribution
 - AI Recommendations
@@ -97,25 +119,15 @@ Interactive Dashboard including
 
 ---
 
-### 🎨 Responsive Frontend
+## 🎨 Responsive Frontend
+
+Built using:
 
 - React 19
 - Material UI
+- React Router
 - Responsive Design
 - Dark Theme
-- React Router
-
----
-
-# 🏗 Architecture
-
-> Architecture diagram
-
-![](docs/architecture.png)
-
-📄 Detailed Architecture
-
-👉 [Architecture Documentation](docs/ARCHITECTURE.md)
 
 ---
 
@@ -125,8 +137,8 @@ Interactive Dashboard including
 |----------|--------------|
 | Backend | Spring Boot, Spring Cloud, Spring Security |
 | Frontend | React, Vite, Material UI |
-| Database | PostgreSQL, MongoDB |
 | Authentication | Keycloak, OAuth2, JWT |
+| Database | PostgreSQL, MongoDB |
 | Messaging | RabbitMQ |
 | AI | Google Gemini API |
 | Build Tools | Maven, npm |
@@ -147,6 +159,17 @@ FitTrack
 ├── Fitness_Application_Frontend/
 │
 ├── docs/
+│   ├── architecture.png
+│   ├── login.png
+│   ├── dashboard.png
+│   ├── profile.png
+│   ├── activities.png
+│   ├── recommendation.png
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   ├── SETUP.md
+│   ├── WORKFLOW.md
+│   └── DEPLOYMENT.md
 │
 ├── README.md
 ├── LICENSE
@@ -168,21 +191,14 @@ cd FitTrack
 
 ## Start Backend Services
 
-Run the services in the following order
-
-```
-1. Config Server
-
-2. Eureka Server
-
-3. User Service
-
-4. Activity Service
-
-5. AI Fitness Service
-
-6. Gateway
-```
+| Order | Service |
+|------:|----------|
+| 1 | Config Server |
+| 2 | Eureka Server |
+| 3 | User Service |
+| 4 | Activity Service |
+| 5 | AI Fitness Service |
+| 6 | Gateway |
 
 ## Start Frontend
 
@@ -194,12 +210,13 @@ npm install
 npm run dev
 ```
 
-Frontend
+Frontend:
 
 ```
 http://localhost:5173
 ```
 
+---
 # 📚 Documentation
 
 Detailed project documentation is available in the **docs** directory.
@@ -209,86 +226,14 @@ Detailed project documentation is available in the **docs** directory.
 | 📄 [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Complete Microservices Architecture |
 | 📄 [API.md](docs/API.md) | REST API Reference |
 | 📄 [SETUP.md](docs/SETUP.md) | Local Development Setup |
-| 📄 [WORKFLOW.md](docs/WORKFLOW.md) | Complete Request & Event Flow |
+| 📄 [WORKFLOW.md](docs/WORKFLOW.md) | Request & Event Flow |
 | 📄 [DEPLOYMENT.md](docs/DEPLOYMENT.md) | Deployment Guide |
-
----
-
-# 🔄 System Workflow
-
-### User Authentication
-
-```
-User
-   │
-   ▼
-React Frontend
-   │
-   ▼
-Keycloak
-   │
-JWT Token
-   │
-   ▼
-API Gateway
-```
-
----
-
-### Activity Tracking Workflow
-
-```
-React Frontend
-        │
-        ▼
-API Gateway
-        │
-        ▼
-Activity Service
-        │
-        ▼
-MongoDB
-        │
-Publish Event
-        │
-        ▼
-RabbitMQ
-        │
-        ▼
-AI Fitness Service
-        │
-        ▼
-Google Gemini AI
-        │
-        ▼
-Recommendation Stored
-        │
-        ▼
-MongoDB
-```
-
----
-
-### User Profile Workflow
-
-```
-Frontend
-     │
-     ▼
-Gateway
-     │
-     ▼
-User Service
-     │
-     ▼
-PostgreSQL
-```
 
 ---
 
 # 🔐 Security
 
-FitTrack follows production-style security practices.
+FitTrack follows production-inspired security practices.
 
 Implemented security features include:
 
@@ -299,20 +244,6 @@ Implemented security features include:
 - API Gateway Authentication
 - Automatic User Synchronization
 - Environment Variable Based Secret Management
-
----
-
-# ⚙ Environment Configuration
-
-Each microservice maintains its own configuration using environment variables.
-
-Configuration files are provided as:
-
-```
-.env.example
-```
-
-No secrets or credentials are stored inside the repository.
 
 ---
 
@@ -333,9 +264,9 @@ No secrets or credentials are stored inside the repository.
 
 # 🚀 Deployment
 
-The project is designed to support deployment on modern cloud platforms.
+FitTrack is designed to be deployed on modern cloud platforms.
 
-Planned deployment targets include:
+Supported deployment targets include:
 
 - Railway
 - Render
@@ -343,57 +274,72 @@ Planned deployment targets include:
 - Azure
 - Google Cloud Platform
 
-Deployment documentation will be available in:
+Complete deployment instructions are available in:
+
+📄 **[DEPLOYMENT.md](docs/DEPLOYMENT.md)**
+
+---
+
+# ⚙️ Environment Configuration
+
+Each service uses its own environment configuration.
+
+The repository includes only:
 
 ```
-docs/DEPLOYMENT.md
+.env.example
 ```
+
+No API keys, passwords or secrets are committed.
+
+Refer to:
+
+📄 **[SETUP.md](docs/SETUP.md)**
+
+for complete environment setup.
 
 ---
 
 # 📈 Future Improvements
 
-- Docker Compose Support
+Planned enhancements include:
+
+- Docker Compose
 - Kubernetes Deployment
 - GitHub Actions CI/CD
-- Prometheus Monitoring
-- Grafana Dashboard
-- Centralized Logging
-- Distributed Tracing
-- Email Notifications
-- Push Notifications
+- Cloud Deployment
+- Monitoring & Logging
 
 ---
 
 # 🤝 Contributing
 
-Contributions, issues and feature requests are welcome.
+Contributions are welcome.
 
 If you'd like to contribute:
 
-1. Fork the repository
-2. Create a new feature branch
-3. Commit your changes
-4. Push the branch
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
 
 ---
 
+# 👨‍💻 Author
 
+**Sonu Singh Rajput**
 
 Backend Developer | Full Stack Java Developer
 
-📧 Email
-
+📧 **Email**  
 sonusinghrajput9189@gmail.com
 
-🔗 GitHub
-
+💻 **GitHub**  
 https://github.com/SonuRajput1010
 
-🔗 LinkedIn
-
-(https://www.linkedin.com/in/sonu-rajput1012)
+🔗 **LinkedIn**  
+https://www.linkedin.com/in/sonu-rajput1012
 
 ---
 
@@ -401,7 +347,7 @@ https://github.com/SonuRajput1010
 
 This project is licensed under the **MIT License**.
 
-See the LICENSE file for more details.
+See the **LICENSE** file for more information.
 
 ---
 
@@ -415,10 +361,6 @@ It motivates future improvements and helps others discover the project.
 
 <p align="center">
 
-Made with ❤️ using Spring Boot, React, RabbitMQ, Keycloak and Google Gemini AI.
+**Built with ❤️ using Java, Spring Boot, React, MongoDB, PostgreSQL, RabbitMQ, Keycloak & Google Gemini AI**
 
 </p>
-
-# 👨‍💻 Author
-
-## Sonu Singh Rajput
