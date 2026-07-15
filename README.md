@@ -389,7 +389,7 @@ https://github.com/SonuRajput1010
 
 🔗 LinkedIn
 
-(Add your LinkedIn Profile URL)
+(https://www.linkedin.com/in/sonu-rajput1012)
 
 ---
 
