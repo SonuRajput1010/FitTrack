@@ -16,6 +16,10 @@ The application enables users to securely track fitness activities, manage perso
 |-------|-----------|
 | ![](docs/login.png) | ![](docs/dashboard.png) |
 
+| Profile |
+|-------|
+| ![](docs/profile.png) |
+
 | Activities | AI Recommendation |
 |------------|-------------------|
 | ![](docs/activities.png) | ![](docs/recommendation.png) |
