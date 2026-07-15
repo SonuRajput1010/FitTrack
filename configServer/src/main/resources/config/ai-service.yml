@@ -1,0 +1,35 @@
+spring:
+  config:
+    import: "optional:configserver"
+
+  data:
+    mongodb:
+      uri: ${AI_MONGODB_URI:mongodb://localhost:27017/Fitness_Recommendations}
+      database: ${AI_MONGODB_DATABASE:recommendations}
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+rabbitmq:
+  exchange:
+    name: ${RABBITMQ_EXCHANGE_NAME:fitness.exchange}
+  queue:
+    name: ${RABBITMQ_ACTIVITY_QUEUE:activity.queue}
+  routing:
+    key: ${RABBITMQ_ACTIVITY_ROUTING_KEY:activity.tracking}
+
+server:
+  port: ${AI_SERVICE_PORT:8083}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+
+gemini:
+  api:
+    url: ${GEMINI_API_URL:https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=}
+    key: ${GEMINI_API_KEY}

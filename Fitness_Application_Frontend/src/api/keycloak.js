@@ -1,0 +1,9 @@
+import Keycloak from "keycloak-js";
+
+const keycloak = new Keycloak({
+  url: import.meta.env.VITE_KEYCLOAK_URL || "http://localhost:8181",
+  realm: import.meta.env.VITE_KEYCLOAK_REALM || "Fitness-oauth2",
+  clientId: import.meta.env.VITE_KEYCLOAK_CLIENT_ID || "oauth2-pkce-client",
+});
+
+export default keycloak;
